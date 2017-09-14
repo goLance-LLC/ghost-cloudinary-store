@@ -28,7 +28,7 @@ class CloudinaryStorageAdapter extends BaseAdapter {
     save(image, targetDir) {
         let secure = this.config.secure;
         return new Promise(function(resolve, reject) {
-            cloudinary.v2.uploader.upload(image, function(err, result) {
+            cloudinary.v2.uploader.upload(image.path, function(err, result) {
                 if (err) reject(err);
                 else resolve(secure ? result.secure_url : result.url);
             });
